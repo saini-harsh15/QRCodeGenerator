@@ -1,55 +1,51 @@
-# 🚀 QuickQR Pro
+# Quirk
 
-A modern, production-ready QR Code Generator built with **Spring Boot**, **Thymeleaf**, and **ZXing**. Generate customizable QR codes in PNG or SVG format with support for logo embedding, custom colors, dark mode, and responsive UI.
+A modern, production-ready QR code generator built with Spring Boot, Thymeleaf, and ZXing. Generate customizable QR codes in PNG or SVG format, with support for logo embedding, custom colors, dark mode, and a fully responsive UI.
+---
+
+## Features
+
+- Generate QR codes from any URL
+- Export as PNG or SVG
+- Customize foreground and background colors
+- Optional logo embedding (PNG only)
+- Custom download filename
+- Dark / light mode with saved preference
+- Fully responsive UI
+- Async QR generation via the Fetch API
+- Copy-to-clipboard for the source URL
+- Inline field validation with server-side error mapping
+- Loading state while generating
+- Bean Validation on all inputs
+- Global exception handling
+- Clean, layered architecture
 
 ---
 
-## ✨ Features
+## Tech Stack
 
-- 🔗 Generate QR codes from URLs
-- 🖼️ Export as **PNG** or **SVG**
-- 🎨 Customize foreground and background colors
-- 🏷️ Custom download filename
-- 🖼️ Logo upload (PNG only)
-- 🌙 Dark / Light mode
-- 📱 Fully responsive UI
-- ⚡ Async QR generation using Fetch API
-- 📋 Copy URL to clipboard
-- 🔄 Reset form
-- ⏳ Loading spinner while generating
-- ✅ Inline validation messages
-- 🛡️ Bean Validation
-- 🚨 Global Exception Handling
-- 📦 Clean layered architecture
-
----
-
-## 🛠️ Tech Stack
-
-### Backend
+**Backend**
 - Java 21
 - Spring Boot
 - Spring MVC
 - Thymeleaf
 - Bean Validation
 - ZXing
-- SLF4J Logging
+- SLF4J logging
 - Maven
 
-### Frontend
-- HTML5
-- CSS3
+**Frontend**
+- HTML5 / CSS3
 - JavaScript (ES6+)
-- Fetch API
-- Async/Await
+- Fetch API, async/await
 
-### Testing
+**Testing**
 - JUnit 5
-- Mockito (Work in Progress)
+- Mockito *(in progress)*
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src
@@ -77,60 +73,39 @@ src
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 Browser
-    │
-    ▼
+   │
+   ▼
 Spring MVC Controller
-    │
-    ▼
+   │
+   ▼
 Bean Validation
-    │
-    ▼
+   │
+   ▼
 Service Layer
-    │
-    ▼
+   │
+   ▼
 ZXing Library
-    │
-    ▼
+   │
+   ▼
 PNG / SVG Response
 ```
 
 ---
 
-## 📸 Screenshots
+## Getting Started
 
-### Light Theme
-
-> Add screenshot here
-
-### Dark Theme
-
-> Add screenshot here
-
-### Generated QR
-
-> Add screenshot here
-
----
-
-## 🚀 Getting Started
-
-### Clone the Repository
+Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/QuickQR-Pro.git
+git clone https://github.com/yourusername/quirk.git
+cd quirk
 ```
 
-### Navigate to the Project
-
-```bash
-cd QuickQR-Pro
-```
-
-### Run the Application
+Run the application:
 
 ```bash
 ./mvnw spring-boot:run
@@ -142,15 +117,11 @@ or
 mvn spring-boot:run
 ```
 
-The application will start at:
-
-```
-http://localhost:8080
-```
+The app will be available at `http://localhost:8080`.
 
 ---
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 mvn test
@@ -158,55 +129,44 @@ mvn test
 
 ---
 
-## 📦 Built With
+## Highlights
 
-- Spring Boot
-- Thymeleaf
-- ZXing
-- Maven
-- Java 21
-
----
-
-## 🎯 Highlights
-
-- Layered Architecture
-- Constructor Injection
-- DTO-based Request/Response
-- Bean Validation
-- Global Exception Handling
-- Custom Exception Classes
-- Service Interface + Implementation
-- Responsive UI
-- Dark Mode
-- SVG Generation
-- Logo Embedding
-- Download Support
-- Clean Code Practices
+- Layered architecture with constructor injection
+- DTO-based request/response models
+- Bean Validation with custom exception classes
+- Global exception handling
+- Service interface + implementation split
+- Responsive UI with dark mode
+- SVG generation and logo embedding
+- Clean code practices throughout
 
 ---
 
-## 🔮 Future Improvements
+## Roadmap
 
-- User Authentication (Spring Security + JWT)
-- QR History
-- Database Integration
-- Docker Support
-- CI/CD Pipeline
-- Cloud Deployment
-- Analytics Dashboard
+- User authentication (Spring Security + JWT)
+- QR generation history
+- Database integration
+- Docker support
+- CI/CD pipeline
+- Cloud deployment
+- Analytics dashboard
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Harsh Saini**
 
-- GitHub: https://github.com/yourusername
-- LinkedIn: https://linkedin.com/in/yourprofile
+- GitHub: [github.com/yourusername](https://github.com/yourusername)
+- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
 
 ---
 
-## ⭐ If you like this project
+## License
 
-Please consider giving it a ⭐ on GitHub.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+If you find this project useful, consider giving it a star on GitHub.
