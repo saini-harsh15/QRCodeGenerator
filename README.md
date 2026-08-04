@@ -1,4 +1,4 @@
-# 🚀 QuickQR Pro
+# 🚀 Quirk
 
 A modern, production-ready QR Code Generator built with **Spring Boot**, **Thymeleaf**, and **ZXing**. Generate customizable QR codes in PNG or SVG format with support for logo embedding, custom colors, dark mode, and responsive UI.
 
