@@ -96,10 +96,6 @@ body {
     border-radius: 9px;
     background: var(--accent);
     color: var(--accent-ink);
-    font-family: var(--font-mono);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.02em;
 }
 
 h1 {
