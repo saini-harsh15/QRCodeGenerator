@@ -1,6 +1,8 @@
 # Quirk
 
 A modern, production-ready QR code generator built with Spring Boot, Thymeleaf, and ZXing. Generate customizable QR codes in PNG or SVG format, with support for logo embedding, custom colors, dark mode, and a fully responsive UI.
+
+
 ---
 
 ## Features
@@ -158,14 +160,7 @@ mvn test
 
 **Harsh Saini**
 
-- GitHub: [github.com/yourusername](https://github.com/yourusername)
-- LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-
----
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+- LinkedIn:(https://www.linkedin.com/in/harshsaini15/)
 
 ---
 
