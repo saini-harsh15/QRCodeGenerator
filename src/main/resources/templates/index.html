@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>QuickQR Pro</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+        <header class="app-header">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">QR</span>
+                <div>
+                    <h1>QuickQR <span class="accent-text">Pro</span></h1>
+                    <p class="subtitle">Generate polished QR codes instantly.</p>
+                </div>
+            </div>
+
+            <button type="button" id="theme-toggle" class="icon-button" aria-label="Switch to dark mode">
+                <span class="theme-icon" id="theme-icon" aria-hidden="true">&#9728;</span>
+            </button>
+        </header>
+
+        <div id="notification" class="notification hidden" role="status" aria-live="polite"></div>
+
+        <form id="qr-form" th:action="@{/generate}" method="post" enctype="multipart/form-data" novalidate>
+            <div class="field-group">
+                <label for="text">Destination URL</label>
+                <div class="inline-field">
+                    <input
+                            id="text"
+                            type="url"
+                            name="text"
+                            placeholder="https://example.com"
+                            autocomplete="url"
+                            required>
+                    <button type="button" id="copy-url-btn" class="secondary-button">Copy</button>
+                </div>
+                <p id="text-error" class="field-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-grid">
+                <div class="field-group">
+                    <label for="foregroundColor">Foreground</label>
+                    <input id="foregroundColor" type="color" name="foregroundColor" value="#111827">
+                    <p id="foregroundColor-error" class="field-error" aria-live="polite"></p>
+                </div>
+
+                <div class="field-group">
+                    <label for="backgroundColor">Background</label>
+                    <input id="backgroundColor" type="color" name="backgroundColor" value="#ffffff">
+                    <p id="backgroundColor-error" class="field-error" aria-live="polite"></p>
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div class="field-group">
+                    <label for="format">Format</label>
+                    <select id="format" name="format">
+                        <option value="png">PNG</option>
+                        <option value="svg">SVG</option>
+                    </select>
+                    <p id="format-error" class="field-error" aria-live="polite"></p>
+                </div>
+
+                <div class="field-group">
+                    <label for="fileName">File name</label>
+                    <input id="fileName" type="text" name="fileName" value="quickqr" maxlength="80">
+                    <p id="fileName-error" class="field-error" aria-live="polite"></p>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="logo">Logo (PNG format only)</label>
+                <input id="logo" type="file" name="logo" accept="image/*">
+                <p id="logo-error" class="field-error" aria-live="polite"></p>
+            </div>
+
+            <div class="actions">
+                <button type="submit" id="generate-btn">
+                    <span class="button-label">Generate QR</span>
+                    <span class="spinner hidden" aria-hidden="true"></span>
+                </button>
+
+                <button type="button" id="reset-btn" class="secondary-button">
+                    Reset form
+                </button>
+            </div>
+        </form>
+
+
+
+        <div id="qr-container">
+            <img id="qr-image"
+                 class="hidden"
+                 alt="Generated QR Code">
+
+            <p id="qr-caption" class="qr-caption hidden">Scan to open</p>
+
+            <a id="download-btn"
+               href="#"
+               download="quickqr.png"
+               class="download-btn hidden">
+                Download QR code
+            </a>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

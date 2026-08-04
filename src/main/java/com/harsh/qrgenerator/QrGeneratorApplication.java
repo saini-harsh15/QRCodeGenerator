@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class QrGeneratorApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(QrGeneratorApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(QrGeneratorApplication.class, args);
+    }
 
 }
