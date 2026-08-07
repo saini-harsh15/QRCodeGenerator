@@ -2,6 +2,7 @@ const form = document.getElementById("qr-form");
 const urlInput = document.getElementById("text");
 const formatInput = document.getElementById("format");
 const logoInput = document.getElementById("logo");
+const qrContainer = document.getElementById("qr-container");
 const qrImage = document.getElementById("qr-image");
 const qrCaption = document.getElementById("qr-caption");
 const downloadButton = document.getElementById("download-btn");
@@ -57,6 +58,8 @@ form.addEventListener("submit", async function (event) {
         downloadButton.download = getDownloadFileName(response);
         downloadButton.classList.remove("hidden");
 
+        playRevealAnimation();
+
         showNotification("QR code generated successfully.", "success");
     } catch (error) {
         clearQrPreview();
@@ -111,12 +114,22 @@ function setLoading(isLoading) {
     spinner.classList.toggle("hidden", !isLoading);
 }
 
+function playRevealAnimation() {
+    // Restart the animation even if it already played once this
+    // session, by removing the class, forcing a reflow, then
+    // re-adding it.
+    qrContainer.classList.remove("revealed");
+    void qrContainer.offsetWidth;
+    qrContainer.classList.add("revealed");
+}
+
 function clearQrPreview() {
     if (currentObjectUrl) {
         URL.revokeObjectURL(currentObjectUrl);
         currentObjectUrl = null;
     }
 
+    qrContainer.classList.remove("revealed");
     qrImage.removeAttribute("src");
     qrImage.classList.add("hidden");
     qrCaption.classList.add("hidden");

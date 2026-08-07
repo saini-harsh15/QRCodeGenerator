@@ -50,6 +50,8 @@
             </button>
         </header>
 
+        <div class="barcode-strip" aria-hidden="true"></div>
+
         <div id="notification" class="notification hidden" role="status" aria-live="polite"></div>
 
         <form id="qr-form" th:action="@{/generate}" method="post" enctype="multipart/form-data" novalidate>

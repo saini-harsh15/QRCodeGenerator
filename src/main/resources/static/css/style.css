@@ -5,20 +5,20 @@
 }
 
 :root {
-    --bg: #eef0f3;
-    --panel: #ffffff;
-    --text: #14171c;
-    --muted: #667085;
-    --border: #dfe3e8;
+    --bg: #eeece4;
+    --panel: #fffdf8;
+    --text: #1a1712;
+    --muted: #7c7568;
+    --border: #e2ddd0;
     --accent: #d97706;
     --accent-hover: #b45f04;
-    --accent-soft: #fdf1de;
-    --accent-ink: #201502;
+    --accent-soft: #fbeed9;
+    --accent-ink: #241703;
     --success: #15803d;
     --success-bg: #e8f7ee;
     --error: #b91c1c;
     --error-bg: #fdecec;
-    --shadow: 0 20px 55px rgba(20, 23, 28, 0.10);
+    --shadow: 0 24px 60px rgba(26, 23, 18, 0.10);
 
     --font-display: "Space Grotesk", "Inter", sans-serif;
     --font-body: "Inter", -apple-system, sans-serif;
@@ -26,32 +26,40 @@
 }
 
 body.dark {
-    --bg: #0c0e11;
-    --panel: #15181c;
-    --text: #f2f0ec;
-    --muted: #949cab;
-    --border: #262b31;
+    --bg: #0b0a08;
+    --panel: #16130e;
+    --text: #f2ede3;
+    --muted: #948c7c;
+    --border: #29241a;
     --accent: #f5a524;
-    --accent-hover: #ffb84d;
-    --accent-soft: #2a2013;
-    --accent-ink: #fef3dd;
+    --accent-hover: #ffbb4d;
+    --accent-soft: #2c2211;
+    --accent-ink: #fdf1da;
     --success: #4ade80;
     --success-bg: #12291c;
     --error: #f87171;
     --error-bg: #331414;
-    --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    --shadow: 0 28px 70px rgba(0, 0, 0, 0.5);
 }
 
 body {
     font-family: var(--font-body);
     background: var(--bg);
+    background-image:
+            radial-gradient(circle at 1px 1px, rgba(120, 113, 98, 0.16) 1px, transparent 0);
+    background-size: 22px 22px;
     color: var(--text);
     display: flex;
     justify-content: center;
     align-items: flex-start;
     min-height: 100vh;
-    padding: 48px 16px;
-    transition: background 0.25s ease, color 0.25s ease;
+    padding: 56px 16px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body.dark {
+    background-image:
+            radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
 }
 
 .container {
@@ -60,14 +68,20 @@ body {
     justify-content: center;
 }
 
+/* Card is styled as a die-cut ticket stub: notches punched into both
+   long edges at the level of the perforation that separates the
+   fields from the QR stub. */
+
 .card {
+    position: relative;
     width: min(100%, 560px);
     background: var(--panel);
-    padding: 32px;
+    padding: 34px 32px;
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: var(--shadow);
     transition: background 0.25s ease, border-color 0.25s ease;
+    overflow: hidden;
 }
 
 /* Header / brand */
@@ -77,7 +91,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
-    margin-bottom: 28px;
+    margin-bottom: 6px;
 }
 
 .brand {
@@ -91,19 +105,34 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 9px;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
     background: var(--accent);
     color: var(--accent-ink);
+    box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
+}
+
+body.dark .brand-mark {
+    box-shadow: 0 6px 18px rgba(245, 165, 36, 0.28);
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
 }
 
 h1 {
     font-family: var(--font-display);
     font-weight: 600;
-    font-size: 26px;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    font-size: 27px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
     margin-bottom: 6px;
 }
 
@@ -114,6 +143,24 @@ h1 {
 .subtitle {
     color: var(--muted);
     font-size: 14px;
+}
+
+/* Barcode strip — decorative signature tying the form back to the
+   idea of a printed, scannable stub. Purely visual, aria-hidden. */
+
+.barcode-strip {
+    height: 20px;
+    margin: 22px 0 26px;
+    background-image: repeating-linear-gradient(
+            90deg,
+            var(--text) 0px, var(--text) 1px, transparent 1px, transparent 3px,
+            var(--text) 3px, var(--text) 5px, transparent 5px, transparent 8px,
+            var(--text) 8px, var(--text) 9px, transparent 9px, transparent 13px,
+            var(--text) 13px, var(--text) 15px, transparent 15px, transparent 17px
+    );
+    background-repeat: repeat-x;
+    opacity: 0.16;
+    border-radius: 2px;
 }
 
 /* Fields */
@@ -129,7 +176,7 @@ label {
     font-family: var(--font-mono);
     font-weight: 500;
     font-size: 11px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
 }
 
@@ -140,12 +187,17 @@ select {
     padding: 12px 14px;
     border: 1px solid var(--border);
     border-radius: 9px;
-    background: var(--panel);
+    background: var(--bg);
     color: var(--text);
     font-family: var(--font-body);
     font-size: 15px;
     outline: none;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+input:hover,
+select:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
 }
 
 input[type="color"] {
@@ -157,11 +209,13 @@ input[type="file"] {
     padding: 10px;
     font-size: 13px;
     color: var(--muted);
+    background: var(--bg);
 }
 
 input:focus,
 select:focus {
     border-color: var(--accent);
+    background: var(--panel);
     box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.16);
 }
 
@@ -206,7 +260,7 @@ input:disabled {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 140px;
     gap: 12px;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 button {
@@ -221,11 +275,17 @@ button {
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 8px 20px rgba(217, 119, 6, 0.28);
+    transition: background 0.2s ease, opacity 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+body.dark button {
+    box-shadow: 0 8px 22px rgba(245, 165, 36, 0.22);
 }
 
 button:hover {
     background: var(--accent-hover);
+    box-shadow: 0 10px 24px rgba(217, 119, 6, 0.36);
 }
 
 button:active {
@@ -238,12 +298,14 @@ button:active {
     color: var(--text);
     border: 1px solid var(--border);
     font-weight: 500;
+    box-shadow: none;
 }
 
 .secondary-button:hover,
 .icon-button:hover {
     background: var(--accent-soft);
     border-color: var(--accent);
+    box-shadow: none;
 }
 
 .icon-button {
@@ -260,15 +322,18 @@ button:active {
 button:disabled {
     opacity: 0.55;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
-/* Ticket perforation divider (signature element) */
+/* Ticket perforation divider — the seam a ticket would tear along.
+   Its vertical offset defines --notch-y for the card's punched
+   edges above, so they always line up regardless of form length. */
 
 .ticket-divider {
     position: relative;
     height: 1px;
     border-top: 2px dashed var(--border);
-    margin: 32px -32px 24px;
+    margin: 34px -32px 26px;
 }
 
 .ticket-divider::before,
@@ -334,16 +399,47 @@ button:disabled {
     color: var(--muted);
 }
 
+/* Reveal sequence — plays once the QR is generated, staggered like a
+   stub printing out. Triggered by JS toggling .revealed on the
+   container; the reduced-motion media query further down already
+   zeroes animation-duration globally. */
+
+@keyframes ticket-print {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#qr-container.revealed #qr-image,
+#qr-container.revealed .qr-caption,
+#qr-container.revealed .download-btn {
+    animation: ticket-print 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#qr-container.revealed .qr-caption {
+    animation-delay: 0.06s;
+}
+
+#qr-container.revealed .download-btn {
+    animation-delay: 0.12s;
+}
+
 .download-btn {
     display: inline-block;
     text-align: center;
     background: var(--success);
     color: #ffffff;
-    padding: 12px 20px;
+    padding: 12px 22px;
     border-radius: 9px;
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
+    box-shadow: 0 8px 20px rgba(21, 128, 61, 0.25);
     transition: opacity 0.2s ease;
 }
 
@@ -405,15 +501,15 @@ button:disabled {
 
 @media (max-width: 560px) {
     body {
-        padding: 24px 10px;
+        padding: 28px 10px;
     }
 
     .card {
-        padding: 22px;
+        padding: 24px 22px;
     }
 
     .ticket-divider {
-        margin: 26px -22px 20px;
+        margin: 28px -22px 22px;
     }
 
     h1 {
